@@ -1,0 +1,248 @@
+body {
+    background: #fff;
+}
+
+top {
+    float: left;
+    background: #4169E1;
+    width: 100%;
+    padding: 2.5%;
+    height: 15vh;
+    color: #fff;
+    border-bottom: 1px solid #4682B4;
+}
+
+h1 {
+
+}
+
+aside {
+    float: left;
+    background: #6495ED;
+    width: 20%;
+    padding: 2.5%;
+    height: 100vh;
+    color: #fff;
+    border-right: 3px solid #4682B4;
+}
+
+aside img {
+    width: 80px;
+    float: left;
+}
+top .logo {
+    font-size: 250%;
+    font-weight: bold;
+    position: relative;
+    top: -5%;
+    font-family: 'Lobster';
+}
+
+aside h3 {
+    margin-top: 50px;
+    font-size: 28px;
+}
+
+aside ul {list-style: none}
+aside ul li {
+    color: #fff;
+    display: block;
+    margin-top: 20px;
+    transition: transform .6s ease;
+}
+
+aside ul li:hover, aside ul a:hover {
+    color: #00FFFF;
+    text-decoration: none;
+    transform: scale(1.6);
+}
+
+main .features {
+    float: left;
+    color: #000;
+    margin-top: 10px;
+    text-align: center;
+    width: 75%;
+}
+
+main .left_form{
+float: left;
+padding: 5%;
+position: absolute;
+margin-top:10%;
+margin-left:25%;
+}
+
+main .right_form{
+float: right;
+padding: 5%;
+position: absolute;
+margin-top:10%;
+margin-left:65%;
+}
+
+
+main .knopka01 {
+position: absolute;
+  display: inline-block;
+  text-align: center;
+  margin-left:-120%;
+  margin-top:55%;
+  width: 30%;
+  height: 20%;
+  line-height: 50%;
+  font-size: 20px;
+  text-shadow: 0 1px rgba(255,255,255,.2), 0 -1px rgba(0,0,0,.8);
+  outline: none;
+  border: none;
+  border-radius: 100px;
+  background: rgb(65, 105, 225) radial-gradient(150% 100% at 50% 5px, rgba(255,255,255,.2), rgba(0,0,0,0));
+  box-shadow: inset rgba(0,0,0,.6) 0 -2px 5px, inset rgba(252,255,255,.7) 0 2px 5px, rgba(0,0,0,.8) 0 2px 5px -1px;
+  color: #fff;
+  user-select: none;
+}
+.knopka01:hover {
+  color: rgb(0,59,66);
+  cursor: pointer;
+}
+.knopka01:active {
+  padding-bottom: 1px;
+  box-shadow:
+   inset rgba(0,0,0,1) 0 1px 3px,
+   inset rgba(0,0,0,.6) 0 -2px 5px,
+   inset rgba(252,255,255,.7) 0 2px 5px,
+   0 1px rgba(255,255,255,.08);
+  color: rgb(128,207,214);
+}
+
+@media(max-width:480px) {
+    top .logo{
+    font-size: 150%;
+    }
+
+    aside h3 {
+    display: none;
+    }
+
+    aside ul b {
+    display: none;
+    }
+
+    aside ul i {
+    transform:translateX(10px);
+    }
+
+    main .left_form{
+    margin-top: 40%;
+    }
+
+    main .right_form{
+    margin-top: 90%;
+    margin-left: 25%
+    }
+
+    main .knopka01{
+    margin-left: -65%;
+    font-size:15px;
+    padding: -10px;
+    }
+
+}
+
+@media(max-width:992px) {
+    top .logo{
+    font-size: 150%;
+    }
+
+    aside h3 {
+    display: none;
+    }
+
+    aside ul b {
+    font-size: 13px;
+    }
+
+    aside ul li {
+    transform:translateX(-35px);
+    }
+
+    main .knopka01{
+    margin-top: 80%;
+    width: 45%;
+    }
+
+    }
+
+@media(max-width:768px)and (min-height: 731px) {
+    top .logo{
+    font-size: 150%;
+    }
+
+    top {
+    height: 5vh;
+    }
+
+    aside h3 {
+    display: none;
+    }
+
+    aside ul b {
+    font-size: 13px;
+    }
+
+    aside ul li {
+    transform:translateX(-35px);
+    }
+
+main .left_form{
+    margin-top: 10%;
+    }
+
+    main .right_form{
+    margin-top: 35%;
+    margin-left: 25%
+    }
+
+    main .knopka01{
+    margin-left: -60%;
+    font-size:15px;
+    padding: -10px;
+    }
+
+@media(max-width:720px) and (min-height: 731px) {
+    top .logo{
+    font-size: 120%;
+    }
+    top {
+    height: 13vh;
+    }
+
+    main .left_form{
+    margin-top: 25%;
+    }
+
+    main .right_form{
+    margin-top: 75%;
+    margin-left: 25%
+    }
+
+
+}
+
+}
+
+
+
+
+/*CIRCLES*/
+
+main #circle_main {
+position: absolute;
+	width: 4%;
+	height: 6%;
+    margin-left: 60%;
+    margin-top: 25%;
+	background: #FF0000;
+	-webkit-border-radius: 50%;
+}
+

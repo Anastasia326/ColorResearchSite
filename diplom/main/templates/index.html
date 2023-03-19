@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Цветовое зрение{% endblock %}
+
+
+{% block content %}
+<form method="post">
+        {% csrf_token %}
+<div class="left_form">
+    <label>
+            {{ form.age }}<br>
+            {{ form.gender }}<br>
+            {{ form.city }}<br>
+    </label>
+</div>
+    <div class="right_form">
+        <label>
+        {{ form.profession }}<br>
+        {{ form.daltonizm }}<br>
+        </label>
+
+
+        <input type="button" class="knopka01" value="Начать!">
+        <span>{{ error }}</span>
+</div>
+    </form>
+{% endblock %}
