@@ -37,69 +37,114 @@ var circle_left_down_2 = document.getElementById('circle_left_down_2');
 var circle_right_down_2 = document.getElementById('circle_right_down_2');
 
 let circles = [circle_up_1, circle_down_1, circle_left_up_1, circle_right_up_1, circle_left_down_1, circle_right_down_1,
-circle_up_2, circle_down_2, circle_left_up_2, circle_right_up_2, circle_left_down_2, circle_right_down_2];
-let colors_circles = []
+circle_up_2, circle_down_2, circle_left_up_2, circle_right_up_2, circle_left_down_2, circle_right_down_2, circle_main];
+let circles_names = ['circle_up_1', 'circle_down_1', 'circle_left_up_1', 'circle_right_up_1', 'circle_left_down_1',
+'circle_right_down_1', 'circle_up_2', 'circle_down_2', 'circle_left_up_2', 'circle_right_up_2', 'circle_left_down_2',
+'circle_right_down_2', 'circle_main'];
+let colors_circles = [];
+var answer = '';
+var counter = 0;
 
 function choseColor(el) {
     var index = getRandomInRange(0, 31);
+
     ready.style.display = (ready.style.display == 'inline') ? '' : 'inline';
     localStorage.setItem('hide', ready.style.display);
 
+    changeColor(colors_start[index], true);
+    answer = "Выберите цвет, который больше всего похож на " + colors[index];
+    el.innerHTML = "Выберите цвет, который больше всего похож на " + colors[index];
+}
+
+function changeColor(color_chose, isStart) {
+    console.log('color_chose');
+    console.log(color_chose);
     for(let i = 0; i < 12; ++i) {
     //TODO: КРАСИВАЯ ФОРМУЛА, убрать повторение кода
         var color = "rgb(";
         if (i == 0)  {
-            color += String(20+colors_start[index][0]) + "," + String(colors_start[index][1]) + ","
-            + String(colors_start[index][2]) + ")";
+            color += String(20+color_chose[0]) + "," + String(color_chose[1]) + ","
+            + String(color_chose[2]) + ")";
         } else if (i == 1) {
-            color += String(-20+colors_start[index][0]) + "," + String(colors_start[index][1]) + ","
-            + String(colors_start[index][2]) + ")";
+            color += String(-20+color_chose[0]) + "," + String(color_chose[1]) + ","
+            + String(color_chose[2]) + ")";
         } else if (i == 2) {
-            color += String(20+colors_start[index][0]) + "," + String(colors_start[index][1]) + ","
-            + String(20+colors_start[index][2]) + ")";
+            color += String(20+color_chose[0]) + "," + String(color_chose[1]) + ","
+            + String(20+color_chose[2]) + ")";
         } else if (i == 3) {
-            color += String(-20+colors_start[index][0]) + "," + String(colors_start[index][1]) + ","
-            + String(-20 + colors_start[index][2]) + ")";
+            color += String(-20+color_chose[0]) + "," + String(color_chose[1]) + ","
+            + String(-20+color_chose[2]) + ")";
         } else if (i == 4) {
-            color += String(colors_start[index][0]) + "," + String(colors_start[index][1]) + ","
-            + String(20+colors_start[index][2]) + ")";
+            color += String(color_chose[0]) + "," + String(color_chose[1]) + ","
+            + String(20+color_chose[2]) + ")";
         } else if (i == 5) {
-            color += String(colors_start[index][0]) + "," + String(colors_start[index][1]) + ","
-            + String(-20+colors_start[index][2]) + ")";
+            color += String(color_chose[0]) + "," + String(color_chose[1]) + ","
+            + String(-20+color_chose[2]) + ")";
         } else if (i == 6) {
-            color += String(colors_start[index][0]) + "," + String(20+colors_start[index][1]) + ","
-            + String(20+colors_start[index][2]) + ")";
+            color += String(color_chose[0]) + "," + String(20+color_chose[1]) + ","
+            + String(20+color_chose[2]) + ")";
         } else if (i == 7) {
-            color += String(colors_start[index][0]) + "," + String(-20+colors_start[index][1]) + ","
-            + String(-20+colors_start[index][2]) + ")";
+            color += String(color_chose[0]) + "," + String(-20+color_chose[1]) + ","
+            + String(-20+color_chose[2]) + ")";
         } else if (i == 8) {
-            color += String(colors_start[index][0]) + "," + String(20+colors_start[index][1]) + ","
-            + String(colors_start[index][2]) + ")";
+            color += String(color_chose[0]) + "," + String(20+color_chose[1]) + ","
+            + String(color_chose[2]) + ")";
         } else if (i == 9) {
-            color += String(colors_start[index][0]) + "," + String(-20+colors_start[index][1]) + ","
-            + String(colors_start[index][2]) + ")";
+            color += String(color_chose[0]) + "," + String(-20+color_chose[1]) + ","
+            + String(color_chose[2]) + ")";
         } else if (i == 10) {
-            color += String(20+colors_start[index][0]) + "," + String(20+colors_start[index][1]) + ","
-            + String(colors_start[index][2]) + ")";
+            color += String(20+color_chose[0]) + "," + String(20+color_chose[1]) + ","
+            + String(color_chose[2]) + ")";
         } else if (i == 11) {
-            color += String(-20+colors_start[index][0]) + "," + String(-20+colors_start[index][1]) + ","
-            + String(colors_start[index][2]) + ")";
+            color += String(-20+color_chose[0]) + "," + String(-20+color_chose[1]) + ","
+            + String(color_chose[2]) + ")";
         }
         circles[i].style.background = color;
-        localStorage.setItem("hide" + String(circles[i]), 'yes');
-        colors_circles.push(color);
+        localStorage.setItem("hide" + String(circles_names[i]), 'yes');
+        colors_circles[i] = color;
+    }
+    if (isStart) {
+        colors_circles[12] = "rqb(255,255,255)";
+    } else {
+        var color = 'rgb(' + String(color_chose[0]) + "," + String(color_chose[1]) + ","
+            + String(color_chose[2]) + ")";
+        circle_main.style.background = color;
+        localStorage.setItem("hidecircle_main", 'yes');
+        colors_circles[12] = color;
     }
 
-    el.innerHTML = "Выберите цвет, который больше всего похож на " + colors[index];
 }
+
+
+document.addEventListener("click", function(e) {
+    if (e.target.classList.contains('circle_main')) {
+        alert("Урааааа");
+    }
+    for (let i = 0; i < 12; ++i) {
+        if (e.target.classList.contains(String(circles_names[i]))) {
+            var color_string = colors_circles[i];
+            console.log(color_string);
+            let color =color_string.split(',');
+            var first = color[0];
+            var second = color[1];
+            var third = color[2];
+            first = first.slice(4);
+            third = third.slice(0, third.length - 1);
+            color[0] = Number(first);
+            color[1] = Number(second);
+            color[2] = Number(third);
+            changeColor(color, false);
+        }
+    }
+});
 
 if(localStorage.getItem('hide') == 'inline') {
   document.getElementById('ready').style.display = 'inline';
 }
 
 
-for(let i = 0; i < 12; ++i) {
-    if(localStorage.getItem("hide" + String(circles[i])) == 'yes') {
-      document.getElementById(String(circles[i])).style.background = colors_circles[i];
+for(let i = 0; i < 13; ++i) {
+    if(localStorage.getItem("hide" + String(circles_names[i])) == 'yes') {
+      document.getElementById(String(circles_names[i])).style.background = colors_circles[i];
     }
 }
