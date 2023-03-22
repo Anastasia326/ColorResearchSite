@@ -1,25 +1,26 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Цветовое зрение{% endblock %}
-
+<link rel="stylesheet" href="{% static 'main/css/main.css' %}">
 {% block content %}
 <div class="features">
-    <h1>Поехали</h1>
-    <p>Поехали</p>
+    <script>document.write("Вывод текста javascript при загрузке страницы! Прямо здесь и сейчас!");</script>
+    <script type="text/javascript" src="{% static '/main/js/script.js' %}"></script>
+    <body onload="choseColor(this)"></body>
+    <h2>Если считаете, что уже нашли цвет, нажмите на центральный круг </h2>
 </div>
-
 <div id="circle_main"></div>
-<div id="circle_up_in"></div>
-<div id="circle_down_in"></div>
-<div id="circle_down_left_in"></div>
-<div id="circle_up_left_in"></div>
-<div id="circle_down_right_in"></div>
-<div id="circle_up_right_in"></div>
-<div id="circle_up"></div>
-<div id="circle_down"></div>
-<div id="circle_down_left"></div>
-<div id="circle_up_left"></div>
-<div id="circle_down_right"></div>
-<div id="circle_up_right"></div>
+<div id="circle_up_1"></div>
+<div id="circle_down_1"></div>
+<div id="circle_left_up_1"></div>
+<div id="circle_right_up_1"></div>
+<div id="circle_left_down_1"></div>
+<div id="circle_right_down_1"></div>
+<div id="circle_up_2"></div>
+<div id="circle_down_2"></div>
+<div id="circle_left_up_2"></div>
+<div id="circle_right_up_2"></div>
+<div id="circle_left_down_2"></div>
+<div id="circle_right_down_2"></div>
 
 {% endblock %}

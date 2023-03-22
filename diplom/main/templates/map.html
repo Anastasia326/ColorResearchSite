@@ -4,10 +4,27 @@
 <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
 {% block content %}
 <div class="features">
-    <h1>Выберите цвет, который больше всего похож на </h1>
-    <p></p>
+    <!--<script>document.write("Вывод текста javascript при загрузке страницы! Прямо здесь и сейчас!");</script> -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    <button class ='color' onclick="choseColor(this)">Выбрать цвет!</button>
+    <h2 id="ready">Если считаете, что уже нашли цвет, нажмите на центральный круг </h2>
 </div>
 
+
 <div id="circle_main"></div>
+<div id="circle_up_1"></div>
+<div id="circle_down_1"></div>
+<div id="circle_left_up_1"></div>
+<div id="circle_right_up_1"></div>
+<div id="circle_left_down_1"></div>
+<div id="circle_right_down_1"></div>
+<div id="circle_up_2"></div>
+<div id="circle_down_2"></div>
+<div id="circle_left_up_2"></div>
+<div id="circle_right_up_2"></div>
+<div id="circle_left_down_2"></div>
+<div id="circle_right_down_2"></div>
+<script type="text/javascript" src="{% static '/main/js/script.js' %}"></script>
+
 
 {% endblock %}
