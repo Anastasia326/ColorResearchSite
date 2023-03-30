@@ -33,6 +33,46 @@ h2 {
     display: none;
 }
 
+#next {
+    position:absolute;
+    margin-top:13%;
+    margin-left: -28.9%;
+  text-shadow: 0 1px rgba(255,255,255,.2), 0 -1px rgba(0,0,0,.8);
+  outline: none;
+  border: none;
+  border-radius: 100px;
+  background: rgb(65, 105, 225) radial-gradient(150% 100% at 50% 5px, rgba(255,255,255,.2), rgba(0,0,0,0));
+  color: #fff;
+  z-index: 100;
+  width: 15%;
+  height: 8%;
+  line-height: 50%;
+  font-size: 18px;
+  text-shadow: 0 1px rgba(255,255,255,.2), 0 -1px rgba(0,0,0,.8);
+  display: none;
+
+}
+
+#next:hover {
+  color: rgb(0,59,66);
+  cursor: pointer;
+}
+#next:active {
+  padding-bottom: 1px;
+  box-shadow:
+   inset rgba(0,0,0,1) 0 1px 3px,
+   inset rgba(0,0,0,.6) 0 -2px 5px,
+   inset rgba(252,255,255,.7) 0 2px 5px,
+   0 1px rgba(255,255,255,.08);
+  color: rgb(128,207,214);
+}
+
+#super {
+    display: none;
+    margin-left: 45%;
+    margin-top: 4%;
+
+}
 
 .color {
     color:#6495ED;
@@ -268,134 +308,147 @@ main .left_form{
 
 main #circle_main {
 position: absolute;
+display: none;
 	width: 60px;
 	height: 60px;
     margin-left: 58%;
     margin-top: 32%;
-	background: rgb(255,255,255);
+    border: 1px solid #e3e6e6;
 	/*background: rgb(100,128,100);*/
 	-webkit-border-radius: 50%;
 }
 
 main #circle_up_1 {
 position: absolute;
+display: none;
 	width: 60px;
 	height: 60px;
     margin-left: 58%;
     margin-top: 26%;
-	background: rgb(255,255,255);
+    border: 1px solid #e3e6e6;
 	-webkit-border-radius: 50%;
 }
 
 main #circle_down_1 {
 position: absolute;
+display: none;
 	width: 60px;
 	height: 60px;
     margin-left: 58%;
     margin-top: 38%;
-	background: rgb(255,255,255);
+    border: 1px solid #e3e6e6;
 	-webkit-border-radius: 50%;
 }
 
 main #circle_left_up_1 {
 position: absolute;
+display: none;
 	width: 60px;
 	height: 60px;
     margin-left: 52.5%;
     margin-top: 29.6%;
-	background: rgb(255,255,255);
+    border: 1px solid #e3e6e6;
 	-webkit-border-radius: 50%;
 }
 
 main #circle_right_up_1 {
 position: absolute;
+display: none;
 	width: 60px;
 	height: 60px;
     margin-left: 63.5%;
     margin-top: 29.6%;
-	background: rgb(255,255,255);
+    border: 1px solid #e3e6e6;
 	-webkit-border-radius: 50%;
 }
 
 
 main #circle_left_down_1 {
 position: absolute;
+display: none;
 	width: 60px;
 	height: 60px;
     margin-left: 52.5%;
     margin-top: 34.4%;
-	background: rgb(255,255,255);
+    border: 1px solid #e3e6e6;
 	-webkit-border-radius: 50%;
 }
 
 main #circle_right_down_1 {
 position: absolute;
+display: none;
 	width: 60px;
 	height: 60px;
     margin-left: 63.5%;
     margin-top: 34.4%;
-	background: rgb(255,255,255);
+    border: 1px solid #e3e6e6;
 	-webkit-border-radius: 50%;
 }
 
 main #circle_up_2 {
 position: absolute;
+display: none;
 	width: 60px;
 	height: 60px;
     margin-left: 58%;
     margin-top: 20%;
-	background: rgb(255,255,255);
+    border: 1px solid #e3e6e6;
 	-webkit-border-radius: 50%;
 }
 
 main #circle_down_2 {
 position: absolute;
+display: none;
 	width: 60px;
 	height: 60px;
     margin-left: 58%;
     margin-top: 44%;
-	background: rgb(255,255,255);
+    border: 1px solid #e3e6e6;
 	-webkit-border-radius: 50%;
 }
 
 main #circle_left_up_2 {
 position: absolute;
+display: none;
 	width: 60px;
 	height: 60px;
     margin-left: 47%;
     margin-top: 27.2%;
-	background: rgb(255,255,255);
+    border: 1px solid #e3e6e6;
 	-webkit-border-radius: 50%;
 }
 
 main #circle_right_up_2 {
 position: absolute;
+display: none;
 	width: 60px;
 	height: 60px;
     margin-left: 69%;
     margin-top: 27.2%;
-	background: rgb(255,255,255);
+    border: 1px solid #e3e6e6;
 	-webkit-border-radius: 50%;
 }
 
 
 main #circle_left_down_2 {
 position: absolute;
+display: none;
 	width: 60px;
 	height: 60px;
     margin-left: 47%;
     margin-top: 36.8%;
-	background: rgb(255,255,255);
+    border: 1px solid #e3e6e6;
 	-webkit-border-radius: 50%;
 }
 
 main #circle_right_down_2 {
 position: absolute;
+display: none;
 	width: 60px;
 	height: 60px;
     margin-left: 69%;
     margin-top: 36.8%;
-	background: rgb(255,255,255);
+    border: 1px solid #e3e6e6;
 	-webkit-border-radius: 50%;
 }
 

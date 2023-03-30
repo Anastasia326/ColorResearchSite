@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main'
+    'main',
 ]
 
 MIDDLEWARE = [
@@ -121,6 +121,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+CSRF_TRUSTED_ORIGINS=["http://127.0.0.1:8000","http://127.0.0.1:8000/main/map", "http://127.0.0.1:8000/main/", "http://127.0.0.1:8000/*", 'http://*.127.0.0.1']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
