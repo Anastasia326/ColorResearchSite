@@ -12,7 +12,7 @@ class UserInfo(models.Model):
         ('н', 'Нет'),
         ('хз', 'Есть ли у вас дальтонизм?')
     ]
-    id = models.CharField('Id',max_length=1000, primary_key=True)
+    id = models.CharField('Id', max_length=1000, primary_key=True)
     age = models.IntegerField('Age')
     gender = models.CharField('Gender', max_length=30, choices=GENDER, default='хз')
     city = models.CharField('City', max_length=100)
@@ -23,11 +23,10 @@ class UserInfo(models.Model):
     def __str__(self):
         return str(self.id)
 
-    def change (self, new_id):
-        self.id = new_id
 
 
 class Color0(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -52,6 +51,7 @@ class Color0(models.Model):
 
 
 class Color1(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -76,6 +76,7 @@ class Color1(models.Model):
 
 
 class Color2(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -100,6 +101,7 @@ class Color2(models.Model):
 
 
 class Color3(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -124,6 +126,7 @@ class Color3(models.Model):
 
 
 class Color4(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -148,6 +151,7 @@ class Color4(models.Model):
 
 
 class Color5(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -172,6 +176,7 @@ class Color5(models.Model):
 
 
 class Color6(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -196,6 +201,7 @@ class Color6(models.Model):
 
 
 class Color7(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -220,6 +226,7 @@ class Color7(models.Model):
 
 
 class Color8(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -244,6 +251,7 @@ class Color8(models.Model):
 
 
 class Color9(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -268,6 +276,7 @@ class Color9(models.Model):
 
 
 class Color10(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -292,6 +301,7 @@ class Color10(models.Model):
 
 
 class Color11(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -316,6 +326,7 @@ class Color11(models.Model):
 
 
 class Color12(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -340,6 +351,7 @@ class Color12(models.Model):
 
 
 class Color13(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -364,6 +376,7 @@ class Color13(models.Model):
 
 
 class Color14(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -388,6 +401,7 @@ class Color14(models.Model):
 
 
 class Color15(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -412,6 +426,7 @@ class Color15(models.Model):
 
 
 class Color16(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -436,6 +451,7 @@ class Color16(models.Model):
 
 
 class Color17(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -460,6 +476,7 @@ class Color17(models.Model):
 
 
 class Color18(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -484,6 +501,7 @@ class Color18(models.Model):
 
 
 class Color19(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -508,6 +526,7 @@ class Color19(models.Model):
 
 
 class Color20(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -532,6 +551,7 @@ class Color20(models.Model):
 
 
 class Color21(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -556,6 +576,7 @@ class Color21(models.Model):
 
 
 class Color22(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -580,6 +601,7 @@ class Color22(models.Model):
 
 
 class Color23(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -604,6 +626,7 @@ class Color23(models.Model):
 
 
 class Color24(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -628,6 +651,7 @@ class Color24(models.Model):
 
 
 class Color25(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -652,6 +676,7 @@ class Color25(models.Model):
 
 
 class Color26(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -676,6 +701,7 @@ class Color26(models.Model):
 
 
 class Color27(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -700,6 +726,7 @@ class Color27(models.Model):
 
 
 class Color28(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -724,6 +751,7 @@ class Color28(models.Model):
 
 
 class Color29(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -748,6 +776,7 @@ class Color29(models.Model):
 
 
 class Color30(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
@@ -772,6 +801,7 @@ class Color30(models.Model):
 
 
 class Color31(models.Model):
+    id = models.IntegerField('Id', primary_key=True)
     fKey = models.ForeignKey('UserInfo', on_delete=models.PROTECT, null='nothing')
     step0 = models.CharField('Step0', max_length=30, null='nothing')
     step1 = models.CharField('Step1', max_length=30, null='nothing')
