@@ -3,6 +3,7 @@
 <html lang="ru">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
+    <link rel="icon" href="{% static 'main/img/emblem.ico' %}">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -17,7 +18,22 @@
     <top>
          <span class="logo">Определи свой уровень цветового зрения!</span>
     </top>
-    <aside>
+<div class="aside_mob">
+		<nav>
+			<div class="dropdown">
+				<div class="dropdown-label"><i class="fas fa-bars fa-2x" ></i></div>
+				<div class="dropdown-menu">
+					<ul class="submenu">
+						<li><a href="{% url 'home' %}" style="color: #F2E9E4"><i class="fas fa-home"></i><b> Карта</b></a></li>
+            <li><a href="{% url 'about' %}" style="color: #F2E9E4"><i class="fas fa-address-card"></i><b> Об исследовании</b></a></li>
+            <li><a href="{% url 'results' %}" style="color: #F2E9E4"><i class="fas fa-newspaper"></i><b> Результаты</b></a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+
+     <aside>
 
 
         <h3>Навигация</h3>

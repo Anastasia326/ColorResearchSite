@@ -1,14 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-Результаты исследования
-{% endblock %}
-
+{% block title %}Цветовое зрение{% endblock %}
+<link rel="stylesheet" href="{% static 'main/css/main.css' %}">
 {% block content %}
 <div class="features">
+    <script
+			  src="https://code.jquery.com/jquery-3.6.4.min.js"
+			  integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+			  crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
         <h1>{{ title }}</h1>
     <text_result>Спасибо за уделенное время <br>
         Результаты исследования появятся в начале июня,<br> обязательно возвращайтесь посмотреть!</text_result>
 </div>
     <img id = "img_wait" src="{% static 'main/img/waite.png' %}">
+<script type="text/javascript" src="{% static '/main/js/script.js' %}"></script>
 {% endblock %}

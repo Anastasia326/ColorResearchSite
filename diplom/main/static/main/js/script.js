@@ -95,6 +95,7 @@ var circle_left_down_2 = document.getElementById('circle_left_down_2');
 var circle_right_down_2 = document.getElementById('circle_right_down_2');
 var next = document.getElementById('next');
 var super_step = document.getElementById('super');
+var go_button = document.getElementById('go_button');
 
 let circles = [circle_up_2, circle_up_1, circle_left_up_2, circle_left_up_1, circle_left_down_2, circle_left_down_1,
     circle_down_2, circle_down_1, circle_right_down_2, circle_right_down_1, circle_right_up_2, circle_right_up_1, circle_main
@@ -211,17 +212,13 @@ function choseColor() {
         user_color.push(index);
     } else {
         user_color = localStorage.getItem('user_color').split(',');
-        ////console.log(user_color);
         user_color.push(index);
 
     }
     localStorage.setItem('user_color', user_color);
-    ////console.log(user_color);
 }
 
 function changeColor(color_chose, isStart) {
-    //console.log('color_chose');
-    //console.log(color_chose);
     for (let i = 0; i < 12; ++i) {
         //TODO: КРАСИВАЯ ФОРМУЛА, убрать повторение кода
         var color = "rgb(";
@@ -280,8 +277,6 @@ function changeColor(color_chose, isStart) {
         circles[i].style.background = color;
         localStorage.setItem("hide" + String(circles_names[i]), 'yes');
         colors_circles[i] = color;
-        //console.log(i);
-        //console.log(color);
     }
     if (isStart) {
         colors_circles[12] = "rqb(255,255,255)";
@@ -297,7 +292,6 @@ function changeColor(color_chose, isStart) {
         circles[12].style.display = 'flex';
         localStorage.setItem(circles_names[12], 'show');
     }
-    //console.log(colors_circles[12]);
     localStorage.setItem("colors_circles", colors_circles);
 
 }
@@ -309,13 +303,17 @@ function move() {
 
     function frame() {
         now_width = localStorage.getItem('now_width');
-        ////console.log(now_width);
         elem.style.width = now_width * 100 + '%';
         document.getElementById("label").innerHTML = "Прогресс:" + now_width * 1 + '%';
     }
 }
 
 document.addEventListener("click", function(e) {
+    if (e.target.classList.contains('go_button')) {
+        var url = document.location.href;
+        var url_next = url.substring(0, url_next.length - 5);
+        window.location.href = url_next;
+    }
     if (e.target.classList.contains('circle_main')) {
         data_steps = localStorage.getItem('steps').split('),');
         let len_steps = data_steps.length;
@@ -365,35 +363,10 @@ document.addEventListener("click", function(e) {
                 'step19': data_steps[19].substring(1)
             },
             success: function(response) {
-                ////console.log('Не может быть');
             },
             error: function(response) {
-                ////console.log('Ничего нового');
             }
         })
-        /*console.log({
-                    'fKey':f_key,
-                    'step0': data_steps[0].substring(1),
-                    'step1': data_steps[1],
-                    'step2': data_steps[2],
-                    'step3': data_steps[3],
-                    'step4': data_steps[4],
-                    'step5': data_steps[5],
-                    'step6': data_steps[6],
-                    'step7': data_steps[7],
-                    'step8': data_steps[8],
-                    'step9': data_steps[9],
-                    'step10': data_steps[10],
-                    'step11': data_steps[11],
-                    'step12': data_steps[12],
-                    'step13': data_steps[13],
-                    'step14': data_steps[14],
-                    'step15': data_steps[15],
-                    'step16': data_steps[16],
-                    'step17': data_steps[17],
-                    'step18': data_steps[18],
-                    'step19': data_steps[19]
-                })*/
         Buttons.makeUnVisible(ready);
         Buttons.makeUnVisibleCircles();
         for (let i = 0; i < 13; ++i) {
@@ -431,7 +404,6 @@ document.addEventListener("click", function(e) {
     }
     for (let i = 0; i < 12; ++i) {
         if (e.target.classList.contains(String(circles_names[i]))) {
-            //console.log(i)
             var color_string = a[i] + ')';
             let color = color_string.split(',');
             var first = color[0];
@@ -457,9 +429,8 @@ for (let i = 0; i < 6; ++i) {
         if (Buttons.buttons[i] == my_progress || Buttons.buttons[i] == label) {
             now_width = localStorage.getItem('now_width');
             my_progress.style.width = now_width * 100 + '%';
-            now_width_int = Number(now_width)
-            now_width_int = now_width_int.toFixed(2)
-            console.log(now_width_int)
+            now_width_int = Number(now_width);
+            now_width_int = now_width_int.toFixed(2);
             label.innerHTML = "Прогресс:" + String(now_width_int) + '%';
         }
     }
