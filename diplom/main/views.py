@@ -8,7 +8,6 @@ def is_ajax(request):
     return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
 
 
-# Create your views here.
 def index(request):
     error = ''
     id = request.session.session_key
@@ -18,7 +17,6 @@ def index(request):
         request.COOKIES['id'] = id
         html = redirect('map')
         html.set_cookie('id', id)
-
 
     if not request.COOKIES.get('logged_in'):
         if request.method == 'POST':

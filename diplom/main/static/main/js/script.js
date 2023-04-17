@@ -58,7 +58,7 @@ const colors_start = {
     21: [100, 140, 200],
     22: [150, 140, 60],
     23: [180, 50, 70],
-    24: [170, 170, 130],
+    24: [200, 200, 150],
     25: [150, 30, 30],
     26: [120, 70, 120],
     27: [80, 120, 50],
@@ -180,18 +180,6 @@ function initListeners() {
     choosed_color.addEventListener('click', choseColor);
 }
 
-const ColorManager = {
-    key: 'choosed_color',
-    setColor: function(color_index) {
-        localStorage.setItem(this.key, String(color_index));
-    },
-    getColor: function() {
-        const has = localStorage.getItem(this.key);
-        return has ? localStorage.getItem(this.key) : 'none';
-    }
-}
-
-
 
 function choseColor() {
     while (true) {
@@ -220,60 +208,22 @@ function choseColor() {
 
 function changeColor(color_chose, isStart) {
     for (let i = 0; i < 12; ++i) {
-        //TODO: КРАСИВАЯ ФОРМУЛА, убрать повторение кода
         var color = "rgb(";
         var r_coord = color_chose[0];
         var g_coord = color_chose[1];
         var b_coord = color_chose[2];
-        if (i == 0) {
-            color += String(r_coord + 20) + "," +
-                String(g_coord) + "," +
-                String(b_coord) + ")";
-        } else if (i == 1) {
-            color += String(-20 + r_coord) + "," +
-                String(g_coord) + "," +
-                String(b_coord) + ")";
-        } else if (i == 2) {
-            color += String(20 + r_coord) + "," +
-                String(g_coord) + "," +
-                String(20 + b_coord) + ")";
-        } else if (i == 3) {
-            color += String(-20 + r_coord) + "," +
-                String(g_coord) + "," +
-                String(-20 + b_coord) + ")";
-        } else if (i == 4) {
-            color += String(r_coord) + "," +
-                String(g_coord) + "," +
-                String(20 + b_coord) + ")";
-        } else if (i == 5) {
-            color += String(r_coord) + "," +
-                String(g_coord) + "," +
-                String(-20 + b_coord) + ")";
-        } else if (i == 6) {
-            color += String(r_coord) + "," +
-                String(20 + g_coord) + "," +
-                String(20 + b_coord) + ")";
-        } else if (i == 7) {
-            color += String(r_coord) + "," +
-                String(-20 + g_coord) + "," +
-                String(-20 + b_coord) + ")";
-        } else if (i == 8) {
-            color += String(r_coord) + "," +
-                String(20 + g_coord) + "," +
-                String(b_coord) + ")";
-        } else if (i == 9) {
-            color += String(r_coord) + "," +
-                String(-20 + g_coord) + "," +
-                String(b_coord) + ")";
-        } else if (i == 10) {
-            color += String(20 + r_coord) + "," +
-                String(20 + g_coord) + "," +
-                String(b_coord) + ")";
-        } else if (i == 11) {
-            color += String(-20 + r_coord) + "," +
-                String(-20 + g_coord) + "," +
-                String(b_coord) + ")";
+        if (i == 0 || (i % 4 != 0 && i % 3 != 0)) {
+            r_coord += 20 * (-1) ^ i;
         }
+        if (i != 0 && (i % 6 == 0 || i % 8 == 0 || i % 10 == 0)) {
+            g_coord += 20 * (-1) ^ i;
+        }
+        if (i % 8 != 0 && i % 10 != 0) {
+            b_coord += 20 * (-1) ^ i;
+        }
+        color += String(r_coord) + "," +
+            String(g_coord) + "," +
+            String(b_coord) + ")";
         circles[i].style.background = color;
         localStorage.setItem("hide" + String(circles_names[i]), 'yes');
         colors_circles[i] = color;
@@ -292,6 +242,7 @@ function changeColor(color_chose, isStart) {
         circles[12].style.display = 'flex';
         localStorage.setItem(circles_names[12], 'show');
     }
+    console.log(colors_circles);
     localStorage.setItem("colors_circles", colors_circles);
 
 }
@@ -320,7 +271,7 @@ document.addEventListener("click", function(e) {
         for (let i = len_steps - 1; i < 20; ++i) {
             data_steps.push('хз');
         }
-
+        console.log(data_steps);
         var progress = localStorage.getItem('user_color').split(',').length / 32;
         progress = Number(progress).toFixed(2);
         localStorage.setItem('now_width', progress);
@@ -341,31 +292,29 @@ document.addEventListener("click", function(e) {
             url: 'http://192.168.1.94:8000/main/map',
             data: {
                 'fKey': f_key,
-                'step0': data_steps[0].substring(1),
-                'step1': data_steps[1].substring(1),
-                'step2': data_steps[2].substring(1),
-                'step3': data_steps[3].substring(1),
-                'step4': data_steps[4].substring(1),
-                'step5': data_steps[5].substring(1),
-                'step6': data_steps[6].substring(1),
-                'step7': data_steps[7].substring(1),
-                'step8': data_steps[8].substring(1),
-                'step9': data_steps[9].substring(1),
-                'step10': data_steps[10].substring(1),
-                'step11': data_steps[11].substring(1),
-                'step12': data_steps[12].substring(1),
-                'step13': data_steps[13].substring(1),
-                'step14': data_steps[14].substring(1),
-                'step15': data_steps[15].substring(1),
-                'step16': data_steps[16].substring(1),
-                'step17': data_steps[17].substring(1),
-                'step18': data_steps[18].substring(1),
-                'step19': data_steps[19].substring(1)
+                'step0': data_steps[0],
+                'step1': data_steps[1],
+                'step2': data_steps[2],
+                'step3': data_steps[3],
+                'step4': data_steps[4],
+                'step5': data_steps[5],
+                'step6': data_steps[6],
+                'step7': data_steps[7],
+                'step8': data_steps[8],
+                'step9': data_steps[9],
+                'step10': data_steps[10],
+                'step11': data_steps[11],
+                'step12': data_steps[12],
+                'step13': data_steps[13],
+                'step14': data_steps[14],
+                'step15': data_steps[15],
+                'step16': data_steps[16],
+                'step17': data_steps[17],
+                'step18': data_steps[18],
+                'step19': data_steps[19]
             },
-            success: function(response) {
-            },
-            error: function(response) {
-            }
+            success: function(response) {},
+            error: function(response) {}
         })
         Buttons.makeUnVisible(ready);
         Buttons.makeUnVisibleCircles();

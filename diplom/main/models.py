@@ -19,10 +19,8 @@ class UserInfo(models.Model):
     profession = models.CharField('Profession', max_length=100)
     daltonizm = models.CharField('Daltonizm', max_length=100, choices=ANSWER, default='хз')
 
-
     def __str__(self):
         return str(self.id)
-
 
 
 class Color0(models.Model):
