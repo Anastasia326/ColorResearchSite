@@ -1,7 +1,9 @@
+/*Фон сайта*/
 body {
 	 background: #F2E9E4;
 	 font-family: 'Arial';
 }
+/*Шапка сайта*/
  top {
 	 float: left;
 	 background: #4A4E69;
@@ -10,18 +12,27 @@ body {
 	 height: 15vh;
 	 color: #F2E9E4;
 }
+ top .logo {
+	 font-size: 250%;
+	 font-weight: bold;
+	 position: relative;
+	 top: -5%;
+}
+/*Кнопка "Выберите цвет ...  "*/
  #choosed_color{
 	 color: #4A4E69;
 	 background: F2E9E4;
 	 font-size:120%;
 	 width:50%;
 }
+
  h1 {
 	 font-size: 180%;
 	 color: #F2E9E4;
 	 float: left;
 	 margin-left: 5%;
 }
+/*Надписи в результатах и, в целом, на страницах*/
  h2 {
 	 font-size: 140%;
 	 color: #4A4E69;
@@ -35,10 +46,12 @@ body {
 	 float: left;
 	 margin-left: 5%;
 }
+/*"Если считаете, что уже нашли цвет, нажмите на центральный круг" */
  #ready {
 	 display: none;
 	 margin-left: 20%;
 }
+/*Кнопка Определить еще цвета(обычная, при наведении,нажатая)*/
  #next {
 	 position:absolute;
 	 margin-top:40%;
@@ -66,6 +79,7 @@ body {
 	 box-shadow: inset rgba(0,0,0,1) 0 1px 3px, inset rgba(0,0,0,.6) 0 -2px 5px, inset rgba(252,255,255,.7) 0 2px 5px, 0 1px rgba(255,255,255,.08);
 	 color: rgb(154, 140, 152);
 }
+/*Прогресс на экране(увеличивающаяся плашка, сам прямоугольник, надпись)*/
  #my_progress{
 	 position:absolute;
 	 width:0%;
@@ -94,17 +108,19 @@ body {
 	 padding:1%;
 	 z-index: 999999;
 }
- #super {
-	 display: none;
-	 margin-left: 48%;
-	 margin-top: 4%;
-}
  #my_progress_str{
 	 color:#9A8C98;
 	 font-size: 140%;
 	 width:20%;
 	 height:10%;
 }
+/*"Прекрасно" */
+ #super {
+	 display: none;
+	 margin-left: 48%;
+	 margin-top: 4%;
+}
+/*Кнопка "Выбрать цвет" - можно удалить*/
  .color {
 	 color:#F2E9E4;
 	 margin-left: 5%;
@@ -113,6 +129,7 @@ body {
 	 border-radius: 100px;
 	 font-size: 140%;
 }
+/*Навигация выпадающим списком(для вертикальных устройств)*/
  aside {
 	 float: left;
 	 background: #9A8C98;
@@ -124,12 +141,6 @@ body {
  aside img {
 	 width: 80px;
 	 float: left;
-}
- top .logo {
-	 font-size: 250%;
-	 font-weight: bold;
-	 position: relative;
-	 top: -5%;
 }
  aside h3 {
 	 margin-top: 50px;
@@ -151,6 +162,7 @@ body {
 	 text-decoration: none;
 	 transform: scale(1.6);
 }
+/*Стиль общий для map*/
  main .features {
 	 float: left;
 	 color: #000;
@@ -158,6 +170,7 @@ body {
 	 text-align: center;
 	 width: 75%;
 }
+/*Для страница "О нас" надписи*/
  main .about {
 	 float: left;
 	 font-size: 110%;
@@ -167,6 +180,7 @@ body {
 	 width: 60%;
 	 margin-left:10%;
 }
+/*Первые 3 поля формы*/
  main .left_form{
 	 float: left;
 	 padding: 5%;
@@ -175,6 +189,7 @@ body {
 	 margin-left:30%;
 	 width:50%;
 }
+/*Последние 2 поля формы*/
  main .right_form{
 	 float: right;
 	 padding: 5%;
@@ -182,6 +197,7 @@ body {
 	 margin-top:17%;
 	 margin-left:60%;
 }
+/*кнопка Начать(обычная, при наведении, при нажатии)*/
  #start_button {
 	 position: absolute;
 	 margin-left:-100%;
@@ -202,28 +218,7 @@ body {
 	 box-shadow: inset rgba(0,0,0,1) 0 1px 3px, inset rgba(0,0,0,.6) 0 -2px 5px, inset rgba(252,255,255,.7) 0 2px 5px, 0 1px rgba(255,255,255,.08);
 	 color: rgb(74, 78, 105);
 }
- #go_button {
-	 position: absolute;
-	 margin-left:-19%;
-	 margin-top:5%;
-	 width: 12%;
-	 height: 5%;
-	 font-size: 120%;
-	 color: #F2E9E4;
-	 background: #9A8C98;
-	 text-shadow: 0 1px rgba(255,255,255,.2), 0 -1px rgba(0,0,0,.8);
-	 border: none;
-}
- #go_button:hover {
-	 color: rgb(74, 78, 105);
-	 cursor: pointer;
-}
- #go_button:active {
-	 padding-bottom: 1px;
-	 box-shadow: inset rgba(0,0,0,1) 0 1px 3px, inset rgba(0,0,0,.6) 0 -2px 5px, inset rgba(252,255,255,.7) 0 2px 5px, 0 1px rgba(255,255,255,.08);
-	 color: rgb(74, 78, 105);
-}
-/*CIRCLES*/
+/*Круги(по названию понятно, кто какой), 1 - ближние, 2 - дальние*/
  main #circle_main {
 	 position: absolute;
 	 display: none;
@@ -354,6 +349,7 @@ body {
 	 border: 1px solid #e3e6e6;
 	 -webkit-border-radius: 50%;
 }
+/*Надпись в результате исследования*/
  text_result {
 	 font-size: 160%;
 	 color: #4A4E69;
@@ -361,6 +357,7 @@ body {
 	 margin-top: 4%;
 	 text-align: left;
 }
+/*Картинка Ждуна*/
  #img_wait {
 	 opacity: 1;
 	 width: 30%;
@@ -370,12 +367,14 @@ body {
 	 margin-top: 25%;
 	 box-shadow: inset 0 0 20px 8px rgba(0,0,0,.6);
 }
+/*Вы опредилили все цвета - в конце исследования*/
  #end {
-	 margin-left: 27%;
+	 margin-left: 20%;
 	 margin-top: 10%;
 	 font-size: 190%;
 	 display:none;
 }
+
 /* Под разные экраны*/
 /* Телефон маленький - iphone12 mini, iphone4-5*/
  @media(max-width:480px) {
@@ -747,8 +746,6 @@ main .left_form{
 		 font-size: 120%;
 	}
 }
-
-
 
  @media(min-width:1024px) {
 	 .aside_mob {

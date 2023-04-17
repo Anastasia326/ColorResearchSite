@@ -1,3 +1,4 @@
+// Цвета для исследования
 const colors = {
     0: 'белый',
     1: 'черный',
@@ -33,6 +34,7 @@ const colors = {
     31: 'коралловый'
 }
 
+// Стартовые координаты для каждого цвета
 const colors_start = {
     0: [220, 220, 220],
     1: [80, 70, 70],
@@ -67,19 +69,29 @@ const colors_start = {
     30: [70, 160, 150],
     31: [180, 90, 50]
 }
-
+// Шаг между цветами при выборе цвета
 const step = 20;
 
+// Фон
+const base_color = "rgb(242, 233, 228);"
+
+//Выбор случайного цвета(просто числа)
 function getRandomInRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-const base_color = "rgb(242, 233, 228);"
+// Получаем объекты
+// Прогресс
 var my_bar = document.getElementById('my_bar');
+// Надпись
 var label = document.getElementById('label');
+// Движущаяся часть прогресса
 var my_progress = document.getElementById('my_progress');
+// Надпись с выбором цвета
 var choosed_color = document.getElementById('choosed_color');
+// Надпись "Если готов..."
 var ready = document.getElementById('ready');
+// Круги
 var circle_main = document.getElementById('circle_main');
 var circle_up_1 = document.getElementById('circle_up_1');
 var circle_down_1 = document.getElementById('circle_down_1');
@@ -93,29 +105,34 @@ var circle_left_up_2 = document.getElementById('circle_left_up_2');
 var circle_right_up_2 = document.getElementById('circle_right_up_2');
 var circle_left_down_2 = document.getElementById('circle_left_down_2');
 var circle_right_down_2 = document.getElementById('circle_right_down_2');
+// Кнопка далее
 var next = document.getElementById('next');
+// Надпись Прекрасно
 var super_step = document.getElementById('super');
-var go_button = document.getElementById('go_button');
 
+// Все круги
 let circles = [circle_up_2, circle_up_1, circle_left_up_2, circle_left_up_1, circle_left_down_2, circle_left_down_1,
     circle_down_2, circle_down_1, circle_right_down_2, circle_right_down_1, circle_right_up_2, circle_right_up_1, circle_main
 ];
+//Названия кругов
 let circles_names = ['circle_up_2', 'circle_up_1', 'circle_left_up_2', 'circle_left_up_1', 'circle_left_down_2', 'circle_left_down_1',
     'circle_down_2', 'circle_down_1', 'circle_right_down_2', 'circle_right_down_1', 'circle_right_up_2', 'circle_right_up_1', 'circle_main'
 ];
+// Цвета кругов
 let colors_circles = [];
+// Надпись "Выберите цвет..." с сохраненным цветом
 let answer = '';
-var counter = 0;
-var to_db = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
 
+// Все кнопки
 const Buttons = {
-    ready: ready, //вторая надпись, про центр
-    next: next, //кнопка продолжения
-    super_step: super_step, //надпись продолжения
-    my_bar: my_bar,
-    my_progress: my_progress,
-    label: label,
+    ready: ready, // вторая надпись, про центр
+    next: next, // кнопка продолжения
+    super_step: super_step, // надпись продолжения
+    my_bar: my_bar, // прогресс
+    my_progress: my_progress, // прогресс двигающийся
+    label: label, // прогресс надпись
     buttons: [ready, next, super_step, my_progress, my_bar, label],
+    // Название кнопки
     name: function(value) {
         if (value == ready) {
             return 'ready';
@@ -136,17 +153,21 @@ const Buttons = {
             return 'label';
         }
     },
+    // Показываем кнопку
     makeVisible: function(value) {
         value.style.display = 'inline';
         localStorage.setItem(Buttons.name(value), 'show');
     },
+    // Скрываем кнопку
     makeUnVisible: function(value) {
         value.style.display = 'none';
         localStorage.setItem(Buttons.name(value), 'hide');
     },
+    // Показываем кнопку после обновления страницы
     demonstrateThis: function(value, stringCommand) {
         value.style.display = stringCommand;
     },
+    // Показываем круги
     makeVisibleCircles: function(center) {
         for (let i = 0; i < 12; ++i) {
             circles[i].style.display = 'flex';
@@ -157,12 +178,14 @@ const Buttons = {
             localStorage.setItem(circles_names[12], 'show');
         }
     },
+    // Скрываем круги
     makeUnVisibleCircles: function() {
         for (let i = 0; i < 13; ++i) {
             circles[i].style.display = 'none';
             localStorage.setItem(circles_names[i], 'hide');
         }
     },
+    // Показываем круги после обновления страницы
     demonstrateCircles: function(stringCommand, center) {
         let a = localStorage.getItem('colors_circles').split('),');
         for (let i = 0; i < 12; ++i) {
@@ -176,13 +199,15 @@ const Buttons = {
     }
 }
 
+// Отслеживаем события(клики)
 function initListeners() {
     choosed_color.addEventListener('click', choseColor);
 }
 
-
+// Функция выюора цвета
 function choseColor() {
     while (true) {
+    // Ищем цвет, который пользователь еще не выбирал
         var index = getRandomInRange(0, 31);
         if (localStorage.getItem('user_color') == null || !localStorage.getItem('user_color').split(',').includes(String(index))) {
             break;
@@ -190,12 +215,15 @@ function choseColor() {
     }
     Buttons.makeVisible(ready);
     Buttons.makeVisibleCircles('no');
+    // Запускаем раскрашивае кругов от стартового цвета для выбранного цвета
     changeColor(colors_start[index], true);
     answer = "Выберите цвет, который больше всего похож на " + colors[index];
     localStorage.setItem('answer', answer);
+    // Выводим надпись с цветом
     choosed_color.innerHTML = "Выберите цвет, который больше всего похож на " + colors[index];
     localStorage.setItem('choosed_color', 'show');
     var user_color = [];
+    // Запоминаем, что пользователь выбрал этот цвет
     if (localStorage.getItem('user_color') == null) {
         user_color.push(index);
     } else {
@@ -206,20 +234,22 @@ function choseColor() {
     localStorage.setItem('user_color', user_color);
 }
 
+// Функция раскрашивания кругов
 function changeColor(color_chose, isStart) {
     for (let i = 0; i < 12; ++i) {
         var color = "rgb(";
         var r_coord = color_chose[0];
         var g_coord = color_chose[1];
         var b_coord = color_chose[2];
-        if (i == 0 || (i % 4 != 0 && i % 3 != 0)) {
-            r_coord += 20 * (-1) ^ i;
+        // Логика будет объяснена на гитхабе
+        if (i == 0 || i == 1 || i == 2 || i == 3 || i == 10 || i == 11) {
+            r_coord += step * ((-1) ** i);
         }
-        if (i != 0 && (i % 6 == 0 || i % 8 == 0 || i % 10 == 0)) {
-            g_coord += 20 * (-1) ^ i;
+        if (i == 6 || i == 7 || i == 8 || i == 9 || i == 10 || i == 11) {
+            g_coord += step * ((-1) ** i);
         }
-        if (i % 8 != 0 && i % 10 != 0) {
-            b_coord += 20 * (-1) ^ i;
+        if (i == 2 || i == 3 || i == 4 || i == 5 || i == 6 || i == 7) {
+            b_coord += step * ((-1) ** i);
         }
         color += String(r_coord) + "," +
             String(g_coord) + "," +
@@ -228,11 +258,16 @@ function changeColor(color_chose, isStart) {
         localStorage.setItem("hide" + String(circles_names[i]), 'yes');
         colors_circles[i] = color;
     }
+    // Если первый показ, то аользователь не выбрал цвет, поэтому центральный круг прозрачный(цвета фона)
     if (isStart) {
         colors_circles[12] = "rqb(255,255,255)";
         localStorage.setItem("center_display", "no");
         localStorage.setItem("label", 0);
     } else {
+        var r_coord = color_chose[0];
+        var g_coord = color_chose[1];
+        var b_coord = color_chose[2];
+        // иначе красим в цвет, выбранный пользователем
         var color = 'rgb(' + String(r_coord) + "," + String(g_coord) + "," +
             String(b_coord) + ")";
         circle_main.style.background = color;
@@ -247,43 +282,54 @@ function changeColor(color_chose, isStart) {
 
 }
 
+// Продвижение прогресса
 function move() {
     var elem = document.getElementById("my_progress");
+    // Размер движушайся плашки
     var now_width = 0;
     var id = setInterval(frame, 0);
 
     function frame() {
+        // Прогресс пользователя
         now_width = localStorage.getItem('now_width');
+        // Расширяем прогресс
         elem.style.width = now_width * 100 + '%';
+        // В надписи меняем прогресс
         document.getElementById("label").innerHTML = "Прогресс:" + now_width * 1 + '%';
     }
 }
 
+// Логика при клике
 document.addEventListener("click", function(e) {
-    if (e.target.classList.contains('go_button')) {
-        var url = document.location.href;
-        var url_next = url.substring(0, url_next.length - 5);
-        window.location.href = url_next;
-    }
+
+    // Если клик по центральному кругу - пользователь выбрал цвет
     if (e.target.classList.contains('circle_main')) {
+        // Шаги пользователя
         data_steps = localStorage.getItem('steps').split('),');
         let len_steps = data_steps.length;
-        for (let i = len_steps - 1; i < 20; ++i) {
+        const size_bd = 20;
+        // Заполняем оставшееся для формата БД
+        for (let i = len_steps - 1; i < size_bd; ++i) {
             data_steps.push('хз');
         }
-        console.log(data_steps);
-        var progress = localStorage.getItem('user_color').split(',').length / 32;
+        // Считаем прогресс пользователя
+        var progress = localStorage.getItem('user_color').split(',').length / Object.keys(colors).length;
         progress = Number(progress).toFixed(2);
         localStorage.setItem('now_width', progress);
         move();
+        // Заполнение БД
         localStorage.setItem("steps", '');
+        //  ИД пользователя
         f_key = Cookies.get('id');
+        // Нынешний цвет
         var now_color = localStorage.getItem('user_color').split(',');
+        // Прокидываем в python для выбора нужной БД
         Cookies.set("color", now_color[now_color.length - 1], {
             SameSite: "None; secure"
         });
-        var token = Cookies.get('csrftoken');
 
+        // Отправление информации о выборе пользователя
+        var token = Cookies.get('csrftoken');
         $.ajax({
             headers: {
                 "X-CSRFToken": token
@@ -316,17 +362,17 @@ document.addEventListener("click", function(e) {
             success: function(response) {},
             error: function(response) {}
         })
+        //Убираем кнопки о результате
         Buttons.makeUnVisible(ready);
         Buttons.makeUnVisibleCircles();
-        for (let i = 0; i < 13; ++i) {
-            circles[i].style.background = 'rgb(255,255,255)';
-        }
-
-        if (localStorage.getItem('user_color').split(',').length == 32) {
+        // Проверяем, дошел ли пользователь до конца
+        if (localStorage.getItem('user_color').split(',').length == Object.keys(colors).length) {
+            // Если да, то говорим, что он молодец
             var value = document.getElementById('end');
             value.style.display = 'inline';
             localStorage.setItem('end', 'show');
         } else {
+            // Иначе показываем прогресс и предлагаем продолжить
             localStorage.setItem("colors_circles", colors_circles);
             Buttons.makeVisible(next);
             Buttons.makeVisible(super_step);
@@ -334,25 +380,33 @@ document.addEventListener("click", function(e) {
             Buttons.makeVisible(my_bar);
             Buttons.makeVisible(label);
         }
-
     }
 
+    // Если нажал на "Определить еще цвета"
     if (e.target.classList.contains('next')) {
+        // Скрываем прогресс
         Buttons.makeUnVisible(next);
         Buttons.makeUnVisible(super_step);
         Buttons.makeUnVisible(label);
         Buttons.makeUnVisible(my_bar);
         Buttons.makeUnVisible(my_progress);
+        // Выбираем новый цвет
         choseColor();
     }
+
+    // Если нажал на другой(не центральный) круг
     let a = localStorage.getItem('colors_circles').split('),');
     if (localStorage.getItem('steps') == null) {
+        // Если первый шаг
         var now_answer = [];
     } else {
+        // Если шаги уже были
         var now_answer = localStorage.getItem('steps').split(',');
     }
+    // Определяем, что выбрал пользователь
     for (let i = 0; i < 12; ++i) {
         if (e.target.classList.contains(String(circles_names[i]))) {
+            // Преобразовываем в удобный формат
             var color_string = a[i] + ')';
             let color = color_string.split(',');
             var first = color[0];
@@ -365,6 +419,7 @@ document.addEventListener("click", function(e) {
             color[2] = Number(third);
             now_answer.push('(' + String(color[0]) + ',' + String(color[1]) + ',' + String(color[2]) + ')');
             localStorage.setItem('steps', now_answer);
+            // Запускаем расскраску от выбора пользователя
             changeColor(color, false);
         }
     }
@@ -372,9 +427,13 @@ document.addEventListener("click", function(e) {
 
 initListeners();
 
+// Логика при обновлении страницы
+// Отображение всех кнопок после обновления
 for (let i = 0; i < 6; ++i) {
+    // Если надо показывать кнопку
     if (localStorage.getItem(Buttons.name(Buttons.buttons[i])) == 'show') {
         Buttons.demonstrateThis(Buttons.buttons[i], 'inline');
+        // Отображение прогресса
         if (Buttons.buttons[i] == my_progress || Buttons.buttons[i] == label) {
             now_width = localStorage.getItem('now_width');
             my_progress.style.width = now_width * 100 + '%';
@@ -383,36 +442,36 @@ for (let i = 0; i < 6; ++i) {
             label.innerHTML = "Прогресс:" + String(now_width_int) + '%';
         }
     }
-
+    // Если не надо показывать
     if (localStorage.getItem(Buttons.name(Buttons.buttons[i])) == 'hide') {
         Buttons.demonstrateThis(Buttons.buttons[i], 'none');
     }
 }
+
+// Показ надписи при обновлении
 if (localStorage.getItem('choosed_color') == 'show') {
     choosed_color.innerHTML = localStorage.getItem('answer');
 }
-
+// Показ всех кругов circle_down_1 - просто люой круг, не важно
 if (localStorage.getItem('circle_down_1') == 'show') {
     Buttons.demonstrateCircles('flex', localStorage.getItem('center_display'));
 }
-
+// Сокрытие всех кругов circle_down_1 - просто люой круг, не важно
 if (localStorage.getItem('circle_down_1') == 'hide') {
     Buttons.demonstrateCircles('none', localStorage.getItem('center_display'));
 }
-
-if (navigator.cookieEnabled === false) {
-
-    alert("Cookies отключены! Будьте человеком, включите, а то ничего работать не будет(");
-
-}
-
+// Показ надписи про конец исследования
 if (localStorage.getItem("end") == 'show') {
-    document.getElementById(end).style.display = 'inline';
+    document.getElementById('end').style.display = 'inline';
 }
-
-
+// Показ всех кругов при обновлении
 for (let i = 0; i < 13; ++i) {
     if (localStorage.getItem("hide" + String(circles_names[i])) == 'yes') {
         document.getElementById(String(circles_names[i])).style.background = colors_circles[i];
     }
+}
+
+// Проверка, что у человека включены куки
+if (navigator.cookieEnabled === false) {
+    alert("Cookies отключены! Будьте человеком, включите, а то ничего работать не будет(");
 }
