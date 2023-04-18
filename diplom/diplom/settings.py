@@ -26,11 +26,10 @@ SECRET_KEY = 'django-insecure-3@r%%y_!ql84l6^^6-l&de@*lg2#=!-u!x6pw!w7l+uyx=!fb9
 # TODO: Сделать False!!!!
 DEBUG = True
 
-ALLOWED_HOSTS = ['198.211.99.20', 'localhost', '127.0.0.1', '192.168.1.94']
+ALLOWED_HOSTS = ['198.211.99.20', 'localhost', '127.0.0.1', '192.168.1.94', '0.0.0.0', '31.31.196.203']
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
