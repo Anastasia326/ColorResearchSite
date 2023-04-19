@@ -439,6 +439,7 @@ for (let i = 0; i < 6; ++i) {
             my_progress.style.width = now_width * 100 + '%';
             now_width_int = Number(now_width);
             now_width_int = now_width_int.toFixed(2);
+            now_width_int *=100;
             label.innerHTML = "Прогресс:" + String(now_width_int) + '%';
         }
     }
