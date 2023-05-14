@@ -324,18 +324,24 @@ document.addEventListener("click", function(e) {
         // Нынешний цвет
         var now_color = localStorage.getItem('user_color').split(',');
         // Прокидываем в python для выбора нужной БД
-        Cookies.set("color", now_color[now_color.length - 1], {
+        /*Cookies.set("color", now_color[now_color.length - 1], {
             SameSite: "None; secure"
-        });
-
+        });*/
+        Cookies.set("color", now_color[now_color.length - 1]);
+        console.log(Cookies.get('color'));
         // Отправление информации о выборе пользователя
         var token = Cookies.get('csrftoken');
+        console.log("h");
         $.ajax({
             headers: {
-                "X-CSRFToken": token
+                "X-CSRFToken": token,
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': 'true',
+                 'Access-Control-Allow-Headers': 'Authorization,Content-Type,Accept,Origin,User-Agent,DNT,Cache-Control,X-Mx-ReqToken',
+                 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, DELETE'
             },
             type: 'POST',
-            url: 'http://192.168.1.94:8000/main/map',
+            url: 'http:///127.0.0.1:8000/main/map',
             data: {
                 'fKey': f_key,
                 'step0': data_steps[0],
@@ -359,6 +365,7 @@ document.addEventListener("click", function(e) {
                 'step18': data_steps[18],
                 'step19': data_steps[19]
             },
+            dataType: 'json',
             success: function(response) {},
             error: function(response) {}
         })

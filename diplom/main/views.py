@@ -6,11 +6,13 @@ from django.shortcuts import HttpResponse
 
 # Проверка, что запрос ajax
 def is_ajax(request):
+    print("AAAAAAA")
     return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
 
 
 # Запуск начала исследования
 def index(request):
+    print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
     error = ''
     # Получаем ИД сессии, это будет наш ключ user-а
     id = request.session.session_key
@@ -46,6 +48,7 @@ def index(request):
         # Иначе страница с заполнением данных
         return render(request, 'index.html', context)
     else:
+        print('ajax')
         colors_bd = [ColorForm0(request.POST), ColorForm1(request.POST), ColorForm2(request.POST),
                      ColorForm3(request.POST), ColorForm4(request.POST), ColorForm5(request.POST),
                      ColorForm6(request.POST),
@@ -59,11 +62,15 @@ def index(request):
                      ColorForm26(request.POST),
                      ColorForm27(request.POST), ColorForm28(request.POST), ColorForm29(request.POST),
                      ColorForm30(request.POST), ColorForm31(request.POST)]
+        print(request.POST)
         if request.method == "POST" and is_ajax(request):
+            print("AJAX")
             # Если был запрос ajax
             color = request.COOKIES.get('color')
+
             # Записываем данные по выбору пользователя в БД
             form = colors_bd[int(color)]
+            print(form)
             if form.is_valid():
                 form.save()
             else:
