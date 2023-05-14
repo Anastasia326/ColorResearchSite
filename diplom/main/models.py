@@ -821,5 +821,3 @@ class Color31(models.Model):
     step17 = models.CharField('Step17', max_length=30, null='nothing')
     step18 = models.CharField('Step18', max_length=30, null='nothing')
     step19 = models.CharField('Step19', max_length=30, null='nothing')
-
-# zecnfkfjn'njuj100
