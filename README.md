@@ -74,4 +74,4 @@ if not request.COOKIES.get('id'):
 ![Shema](https://github.com/Anastasia326/ColorResearchSite/blob/master/img_site/coordinats.png)
 # Результаты
 Результаты представлены в ноутбуке Results_research.ipynb      
-Если он не открывается в браузере, то попробуйте через https://translated.turbopages.org/proxy_u/en-ru.ru.540313d7-64778fdb-1a5ed8de-74722d776562/https/nbviewer.org/, просто вставьте ссылку на ноутбук
+Если он не открывается в браузере, то попробуйте через https://nbviewer.org/, просто вставьте ссылку на ноутбук
